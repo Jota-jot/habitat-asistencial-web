@@ -1,38 +1,793 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hábitat Asistencial</title>
+    <title>Hábitat Asistencial — Ecosistema Integral para un Envejecimiento Digno</title>
+    <meta name="description" content="Hábitat Asistencial: tecnología ética, no invasiva y comunitaria para el cuidado de personas mayores. Radares Hub, Biovita y NÉMESIS-CARE.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Logo Hábitat Asistencial" class="logo">
-        <h1>Bienvenidos a Hábitat Asistencial</h1>
-        <p>Un modelo de atención humana, profesional y tecnológica.</p>
-    </header>
-    <main>
-        <section>
-            <h2>¿Qué es Hábitat Asistencial?</h2>
-            <p>Un modelo que combina asistencia a domicilio, tecnología no invasiva como CUIDÓN, y redes comunitarias como los Puntos AMBER.</p>
-        </section>
-        <section>
-            <h2>Servicios destacados</h2>
-            <ul>
-                <li>Descanso Familiar</li>
-                <li>Cheque Hogar Seguro</li>
-                <li>Campamentos intergeneracionales</li>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAVEGACIÓN
+         ═══════════════════════════════════════════════════════════════ -->
+    <nav class="nav" id="nav">
+        <div class="nav__container">
+            <a href="#hero" class="nav__logo">
+                <img src="logo.png" alt="Hábitat Asistencial" class="nav__logo-img">
+                <span class="nav__logo-text">Hábitat<strong>Asistencial</strong></span>
+            </a>
+            <button class="nav__toggle" id="navToggle" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="#ecosistema" class="nav__link">Ecosistema</a></li>
+                <li><a href="#radares" class="nav__link">Radares Hub</a></li>
+                <li><a href="#biovita" class="nav__link">Biovita</a></li>
+                <li><a href="#nemesis" class="nav__link">NÉMESIS-CARE</a></li>
+                <li><a href="#pilares" class="nav__link">Pilares</a></li>
+                <li><a href="#piloto" class="nav__link">Piloto</a></li>
+                <li><a href="#contacto" class="nav__cta">Contactar</a></li>
             </ul>
-        </section>
-        <section>
-            <h2>Contáctanos</h2>
-            <a class="whatsapp-button" href="https://wa.me/34600000000?text=Hola,%20quiero%20más%20información%20sobre%20Hábitat%20Asistencial" target="_blank">Habla con nosotros por WhatsApp</a>
-        </section>
-    </main>
-    <footer>
-        <p>© 2025 Hábitat Asistencial. Todos los derechos reservados.</p>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="hero" id="hero">
+        <div class="hero__bg-shapes">
+            <div class="hero__shape hero__shape--1"></div>
+            <div class="hero__shape hero__shape--2"></div>
+            <div class="hero__shape hero__shape--3"></div>
+        </div>
+        <div class="container hero__content">
+            <div class="hero__badge">Alineado con la Década del Envejecimiento Saludable — OMS 2021-2030</div>
+            <h1 class="hero__title">
+                Un Ecosistema Integral para un
+                <span class="hero__title--accent">Envejecimiento Digno</span>
+            </h1>
+            <p class="hero__subtitle">
+                Tecnología ética, no invasiva y respetuosa. Red humana y comunitaria.
+                Innovación social con garantía de excelencia. Sin cámaras. Sin micrófonos.
+                Solo cuidado real, 24/7.
+            </p>
+            <div class="hero__actions">
+                <a href="#ecosistema" class="btn btn--primary btn--lg">Descubrir el Ecosistema</a>
+                <a href="#piloto" class="btn btn--outline btn--lg">Solicitar Piloto</a>
+            </div>
+            <div class="hero__stats">
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-count="24">24</span><span class="hero__stat-suffix">/7</span>
+                    <span class="hero__stat-label">Monitorización continua</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number">0</span>
+                    <span class="hero__stat-label">Cámaras o micrófonos</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number">100</span><span class="hero__stat-suffix">%</span>
+                    <span class="hero__stat-label">Respetuoso y no invasivo</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number">21</span><span class="hero__stat-suffix">d</span>
+                    <span class="hero__stat-label">Retención máxima de datos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ECOSISTEMA OVERVIEW
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section ecosistema" id="ecosistema">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__tag">El Ecosistema</span>
+                <h2 class="section__title">Tres Tecnologías. <br>Un Solo Propósito.</h2>
+                <p class="section__desc">
+                    Hábitat Asistencial materializa una visión única: unir el rigor científico con la innovación social
+                    y la tecnología más avanzada con la calidez humana más próxima.
+                </p>
+            </div>
+            <div class="eco-grid">
+                <a href="#radares" class="eco-card eco-card--radares">
+                    <div class="eco-card__icon">
+                        <div class="eco-card__icon-circle">
+                            <span class="eco-card__icon-symbol">R</span>
+                        </div>
+                    </div>
+                    <h3 class="eco-card__title">Radares Hub</h3>
+                    <p class="eco-card__role">Protección Diurna</p>
+                    <p class="eco-card__desc">
+                        Monitorización inteligente 24/7 por radar. Detección de caídas, actividades básicas
+                        de la vida diaria, alarmas y SOS. Sin contacto, sin cámaras.
+                    </p>
+                    <ul class="eco-card__tags">
+                        <li>AIoT</li>
+                        <li>CIGBe</li>
+                        <li>API/SDK</li>
+                        <li>Caídas</li>
+                        <li>ABVD</li>
+                        <li>SOS</li>
+                    </ul>
+                    <span class="eco-card__cta">Explorar &rarr;</span>
+                </a>
+                <a href="#biovita" class="eco-card eco-card--biovita">
+                    <div class="eco-card__icon">
+                        <div class="eco-card__icon-circle">
+                            <span class="eco-card__icon-symbol">B</span>
+                        </div>
+                    </div>
+                    <h3 class="eco-card__title">Biovita</h3>
+                    <p class="eco-card__role">Vigilancia Nocturna</p>
+                    <p class="eco-card__desc">
+                        Sensor bajo el colchón que mide parámetros de sueño y cardiovasculares.
+                        Invisible, silencioso, de grado clínico. Sin wearables.
+                    </p>
+                    <ul class="eco-card__tags">
+                        <li>Sueño</li>
+                        <li>HRV</li>
+                        <li>Cardio</li>
+                        <li>Respiración</li>
+                        <li>Arritmias</li>
+                    </ul>
+                    <span class="eco-card__cta">Explorar &rarr;</span>
+                </a>
+                <a href="#nemesis" class="eco-card eco-card--nemesis">
+                    <div class="eco-card__icon">
+                        <div class="eco-card__icon-circle">
+                            <span class="eco-card__icon-symbol">N</span>
+                        </div>
+                    </div>
+                    <h3 class="eco-card__title">NÉMESIS-CARE</h3>
+                    <p class="eco-card__role">Cerebro Predictivo</p>
+                    <p class="eco-card__desc">
+                        Motor de IA v5.0.1 que cruza todos los datos para predecir crisis antes de que ocurran.
+                        Local-first, auto-evolutivo, ético.
+                    </p>
+                    <ul class="eco-card__tags">
+                        <li>IA Predictiva</li>
+                        <li>Local-first</li>
+                        <li>Federado</li>
+                        <li>Cifrado AES</li>
+                    </ul>
+                    <span class="eco-card__cta">Explorar &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         RADARES HUB
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section section--dark radares" id="radares">
+        <div class="container">
+            <div class="product-hero">
+                <div class="product-hero__content">
+                    <span class="section__tag section__tag--light">Radares Hub</span>
+                    <h2 class="section__title section__title--light">
+                        El Guardián Invisible<br>que Nunca Duerme
+                    </h2>
+                    <p class="section__desc section__desc--light">
+                        Tecnología radar de última generación con inteligencia artificial embebida.
+                        Monitoriza actividad, detecta caídas y protege 24/7.
+                        <strong>Sin cámaras. Sin micrófonos. Sin contacto.</strong>
+                    </p>
+                </div>
+                <div class="product-hero__visual">
+                    <div class="radar-visual">
+                        <div class="radar-visual__ring radar-visual__ring--1"></div>
+                        <div class="radar-visual__ring radar-visual__ring--2"></div>
+                        <div class="radar-visual__ring radar-visual__ring--3"></div>
+                        <div class="radar-visual__core">HUB</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card__number">01</div>
+                    <h4 class="feature-card__title">AIoT Embebido</h4>
+                    <p class="feature-card__desc">
+                        Inteligencia artificial directamente en el dispositivo. Aprende los patrones
+                        de tu familiar y detecta anomalías antes de que sean emergencias.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__number">02</div>
+                    <h4 class="feature-card__title">Detección de Caídas</h4>
+                    <p class="feature-card__desc">
+                        Radar de alta precisión que detecta caídas en segundos, incluso si la persona
+                        no puede pedir ayuda. Automático, sin botones.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__number">03</div>
+                    <h4 class="feature-card__title">ABVD — Vida Diaria</h4>
+                    <p class="feature-card__desc">
+                        Monitoriza actividades básicas: levantarse, moverse, cocinar, descansar.
+                        Detecta cambios sutiles en rutinas que indican deterioro.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__number">04</div>
+                    <h4 class="feature-card__title">Protocolo CIGBe</h4>
+                    <p class="feature-card__desc">
+                        Comunicación inteligente de bajo consumo. Funciona 24/7 con consumo
+                        energético mínimo. Operativo incluso en zonas rurales.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__number">05</div>
+                    <h4 class="feature-card__title">Alarmas Inteligentes</h4>
+                    <p class="feature-card__desc">
+                        Alertas graduadas y contextualizadas. Distingue una siesta de una emergencia.
+                        Sin falsas alarmas que generan ansiedad.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__number">06</div>
+                    <h4 class="feature-card__title">API/SDK Abierto</h4>
+                    <p class="feature-card__desc">
+                        Se integra con cualquier sistema de teleasistencia, hospital o plataforma
+                        de salud. Arquitectura abierta, sin cautividad.
+                    </p>
+                </div>
+            </div>
+
+            <div class="product-quote">
+                <blockquote>
+                    "No es una cámara espiando. Es un ángel guardián invisible que solo actúa cuando hace falta.
+                    Tu familiar no tiene que llevar nada encima. Ni recordar cargarlo. Ni sentirse vigilado."
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BIOVITA
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section biovita" id="biovita">
+        <div class="container">
+            <div class="product-hero product-hero--reverse">
+                <div class="product-hero__content">
+                    <span class="section__tag">Biovita</span>
+                    <h2 class="section__title">
+                        El Cardiólogo Silencioso<br>Bajo el Colchón
+                    </h2>
+                    <p class="section__desc">
+                        Monitorización biométrica no invasiva que mide sueño y parámetros cardiovasculares
+                        cada noche. Se coloca bajo el colchón y desaparece.
+                        <strong>La persona no sabe que está ahí.</strong>
+                    </p>
+                </div>
+                <div class="product-hero__visual">
+                    <div class="biovita-visual">
+                        <div class="biovita-visual__bed">
+                            <div class="biovita-visual__mattress"></div>
+                            <div class="biovita-visual__sensor"></div>
+                            <div class="biovita-visual__pulse biovita-visual__pulse--1"></div>
+                            <div class="biovita-visual__pulse biovita-visual__pulse--2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="params-grid">
+                <div class="param-group">
+                    <h3 class="param-group__title">Parámetros de Sueño</h3>
+                    <div class="param-list">
+                        <div class="param-item">
+                            <span class="param-item__name">Duración total</span>
+                            <span class="param-item__desc">Horas efectivas de descanso real</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-item__name">Fases del sueño</span>
+                            <span class="param-item__desc">Ligero, profundo y REM</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-item__name">Latencia</span>
+                            <span class="param-item__desc">Tiempo hasta dormirse</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-item__name">Despertares</span>
+                            <span class="param-item__desc">Interrupciones nocturnas</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-item__name">Movimientos</span>
+                            <span class="param-item__desc">Agitación y cambios posturales</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-item__name">Presencia en cama</span>
+                            <span class="param-item__desc">Detecta ausencias prolongadas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="param-group param-group--cardio">
+                    <h3 class="param-group__title">Parámetros Cardiovasculares</h3>
+                    <div class="param-list">
+                        <div class="param-item">
+                            <span class="param-item__name">Frecuencia cardíaca</span>
+                            <span class="param-item__desc">Latidos por minuto en reposo</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-item__name">HRV</span>
+                            <span class="param-item__desc">Variabilidad — biomarcador de salud general</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-item__name">Frecuencia respiratoria</span>
+                            <span class="param-item__desc">Respiraciones por minuto</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-item__name">Patrones de arritmia</span>
+                            <span class="param-item__desc">Fibrilación auricular silenciosa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-quote product-quote--blue">
+                <blockquote>
+                    "Es como tener un cardiólogo en casa cada noche. Detecta lo que tu familiar no te cuenta.
+                    El 60% de las caídas en mayores ocurren de noche. Biovita está ahí."
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NÉMESIS-CARE
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section section--dark nemesis" id="nemesis">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__tag section__tag--fire">NÉMESIS-CARE v5.0.1</span>
+                <h2 class="section__title section__title--light">
+                    El Titán Inmortal.<br>Cerebro Predictivo del Ecosistema.
+                </h2>
+                <p class="section__desc section__desc--light">
+                    Motor de inteligencia artificial local-first que cruza datos de Radares Hub y Biovita
+                    para predecir crisis de salud antes de que ocurran. Auto-evolutivo, federado, ético.
+                </p>
+            </div>
+
+            <div class="nemesis-arch">
+                <div class="nemesis-arch__layer">
+                    <div class="nemesis-arch__label">Ingesta</div>
+                    <div class="nemesis-arch__content">
+                        <span>Radares Hub &rarr; caídas, movilidad, social</span>
+                        <span>Biovita &rarr; sueño, HRV, cardio</span>
+                    </div>
+                </div>
+                <div class="nemesis-arch__arrow">&darr;</div>
+                <div class="nemesis-arch__layer nemesis-arch__layer--analysis">
+                    <div class="nemesis-arch__label">Análisis Predictivo</div>
+                    <div class="nemesis-arch__content">
+                        <span>HRV rolling baseline (9-14 días)</span>
+                        <span>Mood penalty factor</span>
+                        <span>Threshold auto-ajustable (0.70)</span>
+                    </div>
+                </div>
+                <div class="nemesis-arch__arrow">&darr;</div>
+                <div class="nemesis-arch__layer nemesis-arch__layer--output">
+                    <div class="nemesis-arch__label">Respuesta</div>
+                    <div class="nemesis-arch__content">
+                        <span class="nemesis-flag nemesis-flag--strong">TITAN_STRONG — Estable</span>
+                        <span class="nemesis-flag nemesis-flag--alert">TITAN_CARE_ALERT — Atención</span>
+                        <span class="nemesis-flag nemesis-flag--warrior">TITAN_WARRIOR — Crisis</span>
+                    </div>
+                </div>
+                <div class="nemesis-arch__arrow">&darr;</div>
+                <div class="nemesis-arch__layer nemesis-arch__layer--ethics">
+                    <div class="nemesis-arch__label">Ética Inquebrantable</div>
+                    <div class="nemesis-arch__content">
+                        <span>21 días retención máxima</span>
+                        <span>Local-first (sin cloud)</span>
+                        <span>Consentimiento explícito</span>
+                        <span>Cifrado AES (Fernet + Scrypt)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nemesis-features">
+                <div class="nemesis-feat">
+                    <div class="nemesis-feat__title">Auto-Evolutivo</div>
+                    <p class="nemesis-feat__desc">
+                        Aprende de sus propios errores. Si detecta demasiados falsos positivos,
+                        recalibra automáticamente sus umbrales. Cada evolución queda registrada.
+                    </p>
+                </div>
+                <div class="nemesis-feat">
+                    <div class="nemesis-feat__title">Mensajería Compasiva</div>
+                    <p class="nemesis-feat__desc">
+                        Dual output: alerta técnica para el sistema + mensaje humano adaptado al tono.
+                        Desde suave hasta urgente. Porque cuidar requiere valentía.
+                    </p>
+                </div>
+                <div class="nemesis-feat">
+                    <div class="nemesis-feat__title">Modo Guerrero</div>
+                    <p class="nemesis-feat__desc">
+                        Cuando detecta crisis real con consentimiento activo, el Titán entra en modo
+                        protección total. Notificación inmediata a familia y servicios.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         5 PILARES
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section pilares" id="pilares">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__tag">Los 5 Pilares</span>
+                <h2 class="section__title">Más que Tecnología.<br>Un Modelo de Cuidado Completo.</h2>
+            </div>
+
+            <div class="pilares-timeline">
+                <div class="pilar">
+                    <div class="pilar__number">1</div>
+                    <div class="pilar__content">
+                        <h3 class="pilar__title">Gobernanza Experta</h3>
+                        <p class="pilar__desc">
+                            Alineado con la Década del Envejecimiento Saludable de la OMS.
+                            Capacidad funcional, entornos adaptados, atención integrada y lucha contra el edadismo.
+                            Las personas y sus familias como grupo focal absoluto.
+                        </p>
+                    </div>
+                </div>
+                <div class="pilar">
+                    <div class="pilar__number">2</div>
+                    <div class="pilar__content">
+                        <h3 class="pilar__title">Tecnología Ética</h3>
+                        <p class="pilar__desc">
+                            No invasiva y respetuosa con la intimidad. Sin captación de imagen ni audio.
+                            Accesible, sin brecha digital, diseñada para integrarse de forma natural
+                            en el entorno cotidiano.
+                        </p>
+                    </div>
+                </div>
+                <div class="pilar">
+                    <div class="pilar__number">3</div>
+                    <div class="pilar__content">
+                        <h3 class="pilar__title">Innovación Social</h3>
+                        <p class="pilar__desc">
+                            Integra familias, recursos locales y comercio de proximidad como nodos activos.
+                            Detección temprana, continuidad asistencial y sostenibilidad económica territorial.
+                            Soluciones específicas para entornos rurales.
+                        </p>
+                    </div>
+                </div>
+                <div class="pilar">
+                    <div class="pilar__number">4</div>
+                    <div class="pilar__content">
+                        <h3 class="pilar__title">Red Humana y Comunitaria</h3>
+                        <p class="pilar__desc">
+                            Unidades Móviles Itinerantes, Red de Comercios Amigables y Punto AMBER.
+                            Infraestructura humana del territorio que consolida prevención, confianza
+                            y cohesión comunitaria.
+                        </p>
+                    </div>
+                </div>
+                <div class="pilar">
+                    <div class="pilar__number">5</div>
+                    <div class="pilar__content">
+                        <h3 class="pilar__title">Proyectos Piloto Territoriales</h3>
+                        <p class="pilar__desc">
+                            Activan ayudas existentes, generan empleo profesionalizado, frenan despoblación
+                            y estructuran formación bajo estándares europeos.
+                            Convierten el cuidado en infraestructura estratégica territorial.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         DATOS / IMPACTO
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section section--accent datos">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title section__title--light">Los Números que Importan</h2>
+            </div>
+            <div class="datos-grid">
+                <div class="dato">
+                    <span class="dato__number">30%</span>
+                    <span class="dato__label">de mayores de 65 sufre al menos una caída al año</span>
+                    <span class="dato__source">OMS</span>
+                </div>
+                <div class="dato">
+                    <span class="dato__number">60%</span>
+                    <span class="dato__label">de las caídas en mayores ocurren de noche</span>
+                    <span class="dato__source">Estudios clínicos</span>
+                </div>
+                <div class="dato">
+                    <span class="dato__number">87%</span>
+                    <span class="dato__label">de los mayores prefiere envejecer en su propio hogar</span>
+                    <span class="dato__source">Eurobarómetro</span>
+                </div>
+                <div class="dato">
+                    <span class="dato__number">2,1M</span>
+                    <span class="dato__label">de personas mayores viven solas en España</span>
+                    <span class="dato__source">INE</span>
+                </div>
+                <div class="dato">
+                    <span class="dato__number">1:8</span>
+                    <span class="dato__label">ratio de retorno: cada euro en prevención ahorra hasta 8 en emergencias</span>
+                    <span class="dato__source">OMS</span>
+                </div>
+                <div class="dato">
+                    <span class="dato__number">5.000+</span>
+                    <span class="dato__label">municipios en riesgo de despoblación en España</span>
+                    <span class="dato__source">FEMP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         COMPARATIVA
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section comparativa">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__tag">Diferencial</span>
+                <h2 class="section__title">Modelo Reactivo vs. Hábitat Asistencial</h2>
+            </div>
+            <div class="compare-table">
+                <div class="compare-table__header">
+                    <div class="compare-table__col"></div>
+                    <div class="compare-table__col compare-table__col--old">Modelo Tradicional</div>
+                    <div class="compare-table__col compare-table__col--new">Hábitat Asistencial</div>
+                </div>
+                <div class="compare-table__row">
+                    <div class="compare-table__label">Cuándo actúa</div>
+                    <div class="compare-table__cell compare-table__cell--old">Cuando hay emergencia</div>
+                    <div class="compare-table__cell compare-table__cell--new">Detecta semanas antes</div>
+                </div>
+                <div class="compare-table__row">
+                    <div class="compare-table__label">Estructura</div>
+                    <div class="compare-table__cell compare-table__cell--old">Fragmentado: sanitario por un lado, social por otro</div>
+                    <div class="compare-table__cell compare-table__cell--new">Integrado: todo conectado</div>
+                </div>
+                <div class="compare-table__row">
+                    <div class="compare-table__label">Centro</div>
+                    <div class="compare-table__cell compare-table__cell--old">El hospital</div>
+                    <div class="compare-table__cell compare-table__cell--new">El hogar</div>
+                </div>
+                <div class="compare-table__row">
+                    <div class="compare-table__label">Coste</div>
+                    <div class="compare-table__cell compare-table__cell--old">Costoso (urgencias, hospitalizaciones)</div>
+                    <div class="compare-table__cell compare-table__cell--new">Eficiente (prevención, comunidad)</div>
+                </div>
+                <div class="compare-table__row">
+                    <div class="compare-table__label">Resultado</div>
+                    <div class="compare-table__cell compare-table__cell--old">Genera dependencia</div>
+                    <div class="compare-table__cell compare-table__cell--new">Promueve autonomía</div>
+                </div>
+                <div class="compare-table__row">
+                    <div class="compare-table__label">Privacidad</div>
+                    <div class="compare-table__cell compare-table__cell--old">Cámaras, wearables, datos en la nube</div>
+                    <div class="compare-table__cell compare-table__cell--new">Sin cámaras, local-first, RGPD nativo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         PROYECTO PILOTO
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section section--dark piloto" id="piloto">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__tag section__tag--light">Proyecto Piloto</span>
+                <h2 class="section__title section__title--light">
+                    No Le Pedimos que Crea.<br>Le Pedimos que Pruebe.
+                </h2>
+                <p class="section__desc section__desc--light">
+                    Un despliegue controlado en su territorio que demuestra el modelo completo
+                    en 6-12 meses. Con métricas claras, evaluación independiente y sin compromiso de continuidad.
+                </p>
+            </div>
+
+            <div class="piloto-grid">
+                <div class="piloto-step">
+                    <div class="piloto-step__num">1</div>
+                    <h4 class="piloto-step__title">Diagnóstico Territorial</h4>
+                    <p class="piloto-step__desc">Mapeo de mayores, recursos, necesidades y conectividad del territorio.</p>
+                </div>
+                <div class="piloto-step">
+                    <div class="piloto-step__num">2</div>
+                    <h4 class="piloto-step__title">Despliegue Tecnológico</h4>
+                    <p class="piloto-step__desc">Instalación de Radares Hub + Biovita en hogares seleccionados.</p>
+                </div>
+                <div class="piloto-step">
+                    <div class="piloto-step__num">3</div>
+                    <h4 class="piloto-step__title">Activación Comunitaria</h4>
+                    <p class="piloto-step__desc">Formación de comercios amigables y creación de Punto AMBER.</p>
+                </div>
+                <div class="piloto-step">
+                    <div class="piloto-step__num">4</div>
+                    <h4 class="piloto-step__title">Unidad Móvil</h4>
+                    <p class="piloto-step__desc">Equipo itinerante técnico y asistencial para el territorio.</p>
+                </div>
+                <div class="piloto-step">
+                    <div class="piloto-step__num">5</div>
+                    <h4 class="piloto-step__title">NÉMESIS-CARE Activo</h4>
+                    <p class="piloto-step__desc">Motor predictivo centralizado procesando datos del piloto.</p>
+                </div>
+                <div class="piloto-step">
+                    <div class="piloto-step__num">6</div>
+                    <h4 class="piloto-step__title">Evaluación y Resultados</h4>
+                    <p class="piloto-step__desc">Métricas, informe bajo estándares europeos y plan de escalado.</p>
+                </div>
+            </div>
+
+            <div class="piloto-benefits">
+                <h3 class="piloto-benefits__title">Beneficios para el Territorio</h3>
+                <div class="piloto-benefits__grid">
+                    <div class="piloto-benefit">
+                        <strong>Fondos europeos</strong>
+                        <span>Acceso a Next Generation, FSE+, FEDER, Horizonte Europa</span>
+                    </div>
+                    <div class="piloto-benefit">
+                        <strong>Empleo local</strong>
+                        <span>Técnicos, cuidadores formados, coordinadores comunitarios</span>
+                    </div>
+                    <div class="piloto-benefit">
+                        <strong>Freno a la despoblación</strong>
+                        <span>Los mayores pueden quedarse en su pueblo con seguridad</span>
+                    </div>
+                    <div class="piloto-benefit">
+                        <strong>Formación certificada</strong>
+                        <span>Programas documentados bajo estándares europeos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CONTACTO / CTA
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section contacto" id="contacto">
+        <div class="container">
+            <div class="contacto__content">
+                <h2 class="section__title">¿Preparado para Transformar<br>el Cuidado en su Territorio?</h2>
+                <p class="section__desc">
+                    Hable con nuestro equipo. Sin compromiso. Sin presión.
+                    Solo la conversación que puede cambiar la vida de miles de personas mayores.
+                </p>
+                <div class="contacto__actions">
+                    <a class="btn btn--whatsapp btn--lg"
+                       href="https://wa.me/34600000000?text=Hola,%20quiero%20información%20sobre%20Hábitat%20Asistencial%20y%20el%20ecosistema%20de%20cuidado"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Hablar por WhatsApp
+                    </a>
+                    <a class="btn btn--outline btn--lg" href="mailto:info@habitatasistencial.com">
+                        Enviar Email
+                    </a>
+                </div>
+                <div class="contacto__trust">
+                    <span>Sin cámaras</span>
+                    <span>Sin micrófonos</span>
+                    <span>RGPD nativo</span>
+                    <span>Local-first</span>
+                    <span>Ético por diseño</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <img src="logo.png" alt="Hábitat Asistencial" class="footer__logo">
+                    <p class="footer__tagline">
+                        Un ecosistema integral para un envejecimiento digno,
+                        conectado y con garantía de excelencia.
+                    </p>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Tecnología</h4>
+                    <ul class="footer__links">
+                        <li><a href="#radares">Radares Hub</a></li>
+                        <li><a href="#biovita">Biovita</a></li>
+                        <li><a href="#nemesis">NÉMESIS-CARE v5.0.1</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Modelo</h4>
+                    <ul class="footer__links">
+                        <li><a href="#pilares">Los 5 Pilares</a></li>
+                        <li><a href="#piloto">Proyecto Piloto</a></li>
+                        <li><a href="#ecosistema">Ecosistema</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Contacto</h4>
+                    <ul class="footer__links">
+                        <li><a href="https://wa.me/34600000000" target="_blank" rel="noopener">WhatsApp</a></li>
+                        <li><a href="mailto:info@habitatasistencial.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Hábitat Asistencial — Careware Ethics Collective. Todos los derechos reservados.</p>
+                <p class="footer__ethics">Tecnología ética · No invasiva · Respetuosa · Local-first · RGPD nativo</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         JAVASCRIPT (Minimal, no frameworks)
+         ═══════════════════════════════════════════════════════════════ -->
+    <script>
+        // Navbar scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('nav--scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('nav__menu--open');
+            navToggle.classList.toggle('nav__toggle--active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav__link, .nav__cta').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('nav__menu--open');
+                navToggle.classList.remove('nav__toggle--active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = nav.offsetHeight + 20;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll(
+            '.eco-card, .feature-card, .param-group, .pilar, .dato, .piloto-step, .nemesis-feat, .nemesis-arch__layer, .compare-table__row'
+        ).forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
