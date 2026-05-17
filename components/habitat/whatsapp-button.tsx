@@ -1,0 +1,2 @@
+import {MessageCircle} from "lucide-react";
+export default function WhatsAppButton(){return <a href="https://wa.me/34635332019?text=Hola%2C%20me%20gustaría%20solicitar%20información%20sobre%20Hábitat%20Asistencial" target="_blank" rel="noopener noreferrer" className="whatsapp-pulse fixed bottom-5 right-5 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl"><MessageCircle className="h-8 w-8"/></a>}
