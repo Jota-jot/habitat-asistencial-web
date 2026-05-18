@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Hábitat Asistencial | Prevención y Coordinación Asistencial en el Hogar",
@@ -16,5 +16,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const schema = {"@context":"https://schema.org","@type":"Organization",name:"Hábitat Asistencial",url:"https://habitatasistencial.es",telephone:"+34635332019",email:"info@habitatasistencial.es",sameAs:["https://assurecareware.es"]};
-  return <html lang="es"><head><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} /></head><body className={`${geistSans.variable} antialiased`}>{children}<Toaster /></body></html>;
+  return (
+    <html lang="es">
+      <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
+      </head>
+      <body className={`${inter.variable} antialiased`}>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
 }
