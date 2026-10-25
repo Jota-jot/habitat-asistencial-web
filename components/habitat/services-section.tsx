@@ -72,6 +72,12 @@ export function ServicesSection(){
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Cuidado de mayores <span className="text-[#F0A500]">a domicilio</span></h2>
             <p className="text-slate-600 text-lg">Asistencia domiciliaria profesional adaptada a cada familia. Cuidadores a domicilio, descanso familiar y gestión social incluida en todos los servicios.</p>
           </div>
+          <div className="max-w-4xl mx-auto mb-12 rounded-2xl border border-[#1B3A6B]/10 bg-[#1B3A6B]/[.03] p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-semibold text-[#1B3A6B] mb-3">No tienes que decidirlo todo de golpe</h3>
+            <p className="text-slate-700 leading-relaxed mb-3">Entendemos la realidad que afronta una familia cuando necesita ayuda en el domicilio: no siempre sabe por dónde empezar ni cuánto apoyo va a necesitar.</p>
+            <p className="text-slate-700 leading-relaxed mb-3">En Hábitat Asistencial acompañamos ese proceso. Empezamos por la necesidad actual, facilitamos la contratación del apoyo adecuado y hacemos seguimiento para ayudar a la persona y a su familia durante la adaptación. Después, modulamos el servicio según cómo evolucione la situación.</p>
+            <p className="text-slate-700 leading-relaxed font-medium">Empezamos con lo que hace falta hoy y lo ajustamos contigo.</p>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {homeServices.map(([title,description,Icon,features]:any)=>(
               <ServiceCard key={title} title={title} description={description} Icon={Icon} features={features} onContact={go}/>
