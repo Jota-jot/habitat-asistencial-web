@@ -5,6 +5,7 @@ import AmberSection from "@/components/habitat/amber-section";
 import PressSection from "@/components/habitat/press-section";
 import AboutSection from "@/components/habitat/about-section";
 import VideosSection from "@/components/habitat/videos-section";
+import ToolsSection from "@/components/habitat/tools-section";
 import CtaSection from "@/components/habitat/cta-section";
 import CredentialsSection from "@/components/habitat/credentials-section";
 import ContactSection from "@/components/habitat/contact-section";
@@ -23,6 +24,7 @@ export default function Home() {
         <PressSection />
         <AboutSection />
         <VideosSection />
+        <ToolsSection />
         <CtaSection />
         <CredentialsSection />
         <ContactSection />
