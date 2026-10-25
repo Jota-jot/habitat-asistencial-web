@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Phone, Menu, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
-const helpUrl = "https://ayudas.habitatasistencial.es";
+const helpUrl = "https://accessibility-grants-x3b7.bolt.host/";
 const nav = [
   ["#inicio", "Inicio"],
   ["#servicios", "Servicios"],
