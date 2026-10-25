@@ -1,15 +1,15 @@
 export function FamilySupportSection() {
   return (
-    <section className="bg-white py-20 sm:py-24">
-      <div className="mx-auto max-w-5xl px-4">
-        <div className="max-w-3xl">
+    <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="max-w-3xl rounded-3xl border border-slate-100 bg-white px-5 py-7 shadow-sm sm:px-8 sm:py-9">
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-[#B77900]">
             Apoyo a las familias
           </p>
-          <h2 className="mb-8 text-3xl font-bold leading-tight text-[#1B3A6B] sm:text-4xl">
+          <h2 className="mb-6 text-3xl font-bold leading-tight tracking-tight text-[#1B3A6B] sm:mb-8 sm:text-4xl">
             Un apoyo que se adapta a cada situación
           </h2>
-          <div className="space-y-5 text-lg leading-relaxed text-slate-700">
+          <div className="space-y-5 text-base leading-8 text-slate-700 sm:text-lg sm:leading-8">
             <p>
               Entendemos la realidad que afronta una familia cuando necesita
               ayuda en el domicilio: no siempre sabe por dónde empezar ni cuánto
@@ -28,7 +28,7 @@ export function FamilySupportSection() {
             </p>
           </div>
           <a
-            href="https://ayudas.habitatasistencial.es"
+            href="https://accessibility-grants-x3b7.bolt.host/"
             className="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#F0A500] px-6 py-3 font-bold text-[#0f2340] transition hover:brightness-95"
           >
             Busco ayudas <span aria-hidden="true" className="ml-2">→</span>
