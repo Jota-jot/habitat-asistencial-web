@@ -11,7 +11,7 @@ export function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative min-h-[min(900px,100svh)] flex items-center overflow-hidden"
+      className="relative flex min-h-[min(900px,100svh)] scroll-mt-20 items-center overflow-hidden"
     >
       <div className="absolute inset-0">
         <img
@@ -38,22 +38,22 @@ export function HeroSection() {
             agrave. Tecnología discreta en el hogar, red de apoyo en el barrio y
             coordinación profesional.
           </p>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <a
               href={helpUrl}
-              className="inline-flex items-center justify-center gap-2 rounded-xl px-8 h-12 bg-[#F0A500] text-[#0f2340] font-bold"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#F0A500] px-6 font-bold text-[#0f2340] shadow-lg shadow-black/10 transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto sm:px-8"
             >
               Busco ayudas <ArrowRight className="w-5 h-5" />
             </a>
             <button
               onClick={() => go("#contacto")}
-              className="inline-flex items-center justify-center gap-2 rounded-xl px-8 h-12 border border-white/30 text-white font-semibold"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/5 px-6 font-semibold text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0A500] sm:w-auto sm:px-8"
             >
               Solicitar información
             </button>
             <button
               onClick={() => go("#servicios")}
-              className="rounded-xl px-8 h-12 border border-white/30 text-white font-semibold"
+              className="min-h-12 w-full rounded-xl border border-white/40 bg-white/5 px-6 font-semibold text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0A500] sm:w-auto sm:px-8"
             >
               Conocer el modelo
             </button>
