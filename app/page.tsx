@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/habitat/navbar";
 import { HeroSection } from "@/components/habitat/hero-section";
+import { FamilySupportSection } from "@/components/habitat/family-support-section";
 import { ServicesSection } from "@/components/habitat/services-section";
 import AmberSection from "@/components/habitat/amber-section";
 import PressSection from "@/components/habitat/press-section";
@@ -19,6 +20,7 @@ export default function Home() {
 
       <main className="flex-1">
         <HeroSection />
+        <FamilySupportSection />
         <ServicesSection />
         <AmberSection />
         <PressSection />
