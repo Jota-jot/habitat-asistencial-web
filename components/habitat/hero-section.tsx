@@ -22,11 +22,11 @@ export function HeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#142B4F]/90 via-[#1B3A6B]/70 to-[#1B3A6B]/35" />
       </div>
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:px-10 lg:py-32">
-        <div className="max-w-2xl space-y-6 sm:space-y-8">
-          <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 border border-[#F0A500]/30 bg-[#F0A500]/10">
+      <div className="relative z-10 mx-auto grid w-full min-w-0 max-w-7xl grid-cols-1 items-center gap-8 px-4 pb-12 pt-28 sm:gap-10 sm:px-8 sm:pb-16 sm:pt-32 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-14 lg:px-10 lg:py-32">
+        <div className="min-w-0 max-w-2xl space-y-6 sm:space-y-8">
+          <div className="inline-flex max-w-full items-start gap-2 rounded-2xl border border-[#F0A500]/30 bg-[#F0A500]/10 px-3 py-2 sm:items-center sm:rounded-full sm:px-4">
             <span className="w-2 h-2 rounded-full bg-[#F0A500] animate-pulse" />
-            <span className="text-sm text-white/90 font-medium">
+            <span className="min-w-0 break-words text-sm font-medium leading-5 text-white/90">
               Prevención y coordinación asistencial domiciliaria
             </span>
           </div>
@@ -58,12 +58,12 @@ export function HeroSection() {
               Conocer el modelo
             </button>
           </div>
-          <div className="flex items-center gap-2 text-white/60 text-sm">
-            <MapPin className="w-4 h-4 text-[#F0A500]" />
+          <div className="flex min-w-0 items-start gap-2 break-words text-sm leading-5 text-white/75">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#F0A500]" />
             Alcalá de Henares · Segovia · Guadalajara · Talavera de la Reina
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:pl-2">
+        <div className="grid min-w-0 grid-cols-2 gap-3 sm:gap-4 lg:pl-2">
           <Card
             icon={<Wifi />}
             title="ASSURE CAREWARE"
@@ -100,10 +100,10 @@ function Card({
   text: string;
 }) {
   return (
-    <div className="rounded-2xl border border-white/20 bg-[#10294B]/55 p-4 shadow-lg shadow-black/10 backdrop-blur-md sm:p-6">
+    <div className="min-w-0 rounded-2xl border border-white/20 bg-[#10294B]/55 p-3 shadow-lg shadow-black/10 backdrop-blur-md sm:p-6">
       <div className="text-[#F0A500] mb-3">{icon}</div>
-      <div className="font-bold text-white">{title}</div>
-      <div className="text-sm text-white/70 mt-1">{text}</div>
+      <div className="break-words [overflow-wrap:anywhere] font-bold leading-snug text-white">{title}</div>
+      <div className="mt-1 break-words text-sm leading-snug text-white/80">{text}</div>
     </div>
   );
 }
