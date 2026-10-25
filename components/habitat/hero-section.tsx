@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { ArrowRight, MapPin, Shield, Wifi } from "lucide-react";
 
 const helpUrl = "https://accessibility-grants-x3b7.bolt.host/";
@@ -15,12 +14,11 @@ export function HeroSection() {
       className="relative min-h-[min(900px,100svh)] flex items-center overflow-hidden"
     >
       <div className="absolute inset-0">
-        <Image
-          src="/images/hero-care.png"
-          alt="Persona mayor en su hogar con apoyo de Hábitat Asistencial"
-          fill
-          priority
-          className="object-cover"
+        <img
+          src="https://images.unsplash.com/photo-1773227055624-07b515ba87c5?auto=format&fit=crop&fm=jpg&q=80&w=2200"
+          alt="Cuidadora acompañando a una mujer mayor"
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#142B4F]/90 via-[#1B3A6B]/70 to-[#1B3A6B]/35" />
       </div>
