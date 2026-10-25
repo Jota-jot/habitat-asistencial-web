@@ -25,15 +25,15 @@ const adhesionService={
 
 function ServiceCard({title,description,Icon,features,onContact}:{title:string,description:string,Icon:any,features:string[],onContact:()=>void}){
   return(
-    <article className="rounded-2xl border bg-white p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+    <article className="flex min-w-0 flex-col rounded-2xl border bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-xl sm:p-6">
       <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 bg-[#1B3A6B]/10 text-[#1B3A6B]">
         <Icon className="w-7 h-7"/>
       </div>
-      <h3 className="text-xl font-semibold mb-3 text-[#1B3A6B]">{title}</h3>
+      <h3 className="mb-3 break-words [overflow-wrap:anywhere] text-xl font-semibold leading-snug text-[#1B3A6B]">{title}</h3>
       <p className="text-slate-600 text-sm leading-relaxed mb-5 flex-1">{description}</p>
       <div className="flex flex-wrap gap-2 mb-5">
         {features.map((f:string)=>(
-          <span key={f} className="text-xs px-3 py-1 rounded-full font-medium bg-[#F0A500]/10 text-[#8a6200]">{f}</span>
+          <span key={f} className="max-w-full break-words rounded-full bg-[#F0A500]/10 px-3 py-1 text-xs font-medium text-[#8a6200]">{f}</span>
         ))}
       </div>
       <button onClick={onContact} className="inline-flex items-center gap-1 text-sm font-medium text-[#1B3A6B] hover:gap-2 transition-all">
@@ -72,12 +72,6 @@ export function ServicesSection(){
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Cuidado de mayores <span className="text-[#F0A500]">a domicilio</span></h2>
             <p className="text-slate-600 text-lg">Asistencia domiciliaria profesional adaptada a cada familia. Cuidadores a domicilio, descanso familiar y gestión social incluida en todos los servicios.</p>
           </div>
-          <div className="max-w-4xl mx-auto mb-12 rounded-2xl border border-[#1B3A6B]/10 bg-[#1B3A6B]/[.03] p-6 sm:p-8">
-            <h3 className="text-xl sm:text-2xl font-semibold text-[#1B3A6B] mb-3">No tienes que decidirlo todo de golpe</h3>
-            <p className="text-slate-700 leading-relaxed mb-3">Entendemos la realidad que afronta una familia cuando necesita ayuda en el domicilio: no siempre sabe por dónde empezar ni cuánto apoyo va a necesitar.</p>
-            <p className="text-slate-700 leading-relaxed mb-3">En Hábitat Asistencial acompañamos ese proceso. Empezamos por la necesidad actual, facilitamos la contratación del apoyo adecuado y hacemos seguimiento para ayudar a la persona y a su familia durante la adaptación. Después, modulamos el servicio según cómo evolucione la situación.</p>
-            <p className="text-slate-700 leading-relaxed font-medium">Empezamos con lo que hace falta hoy y lo ajustamos contigo.</p>
-          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {homeServices.map(([title,description,Icon,features]:any)=>(
               <ServiceCard key={title} title={title} description={description} Icon={Icon} features={features} onContact={go}/>
@@ -97,8 +91,8 @@ export function ServicesSection(){
               <span key={f} className="px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium border border-white/20">{f}</span>
             ))}
           </div>
-          <button onClick={go} className="inline-flex items-center gap-2 rounded-xl px-8 h-14 bg-[#F0A500] text-[#0f2340] font-bold text-lg hover:bg-[#F0A500]/90 transition">
-            Solicitar información sobre el modelo de adhesión<ArrowRight className="w-5 h-5"/>
+          <button onClick={go} className="inline-flex min-h-14 w-full flex-wrap items-center justify-center gap-2 rounded-xl bg-[#F0A500] px-4 py-3 text-center text-base font-bold text-[#0f2340] transition hover:bg-[#F0A500]/90 sm:w-auto sm:px-8 sm:text-lg">
+            Solicitar información sobre el modelo de adhesión<ArrowRight className="h-5 w-5 shrink-0"/>
           </button>
         </div>
       </div>
