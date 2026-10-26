@@ -191,14 +191,14 @@ export function Navbar() {
                 <ExternalLink className="mt-3 h-4 w-4 text-[#1B3A6B]" />
               </a>
               <a
-                href="https://aistudio.google.com/apps/990c963d-0d5a-41ab-b4ff-47af8aa2f2af?showPreview=true&showAssistant=true"
+                href="https://observatorio-habitat-asistencial-13.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-2xl border p-5 hover:border-[#1B3A6B] hover:bg-slate-50"
               >
                 <strong className="block text-[#1B3A6B]">Observatorio / Asesor Domus</strong>
                 <span className="mt-1 block text-sm text-slate-600">Epidemiología y prevención de accidentes en el hogar</span>
-                <span className="mt-3 block break-all text-xs text-slate-500">Asesor IA de prevención</span>
+                <span className="mt-3 block break-all text-xs text-slate-500">observatorio-habitat-asistencial-13.vercel.app</span>
                 <ExternalLink className="mt-3 h-4 w-4 text-[#1B3A6B]" />
               </a>
             </div>
