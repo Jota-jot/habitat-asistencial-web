@@ -2,7 +2,7 @@
 
 import { ArrowRight, MapPin, ShieldCheck, Wifi, Users, Sprout } from "lucide-react";
 
-const helpUrl = "https://ayudas.habitatasistencial.es";
+const helpUrl = "https://accessibility-grants-x3b7.bolt.host";
 
 export function HeroSection() {
   const go = (selector: string) =>
