@@ -18,7 +18,6 @@ export default function ToolsSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Card 1: Subvenciones */}
           <article className="bg-white rounded-2xl border shadow-sm hover:shadow-xl transition-all duration-300 p-8 flex flex-col">
             <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-[#F0A500]/15 text-[#8a6200]">
               <FileText className="w-7 h-7" />
@@ -40,7 +39,7 @@ export default function ToolsSection() {
               </li>
             </ul>
             <a
-              href="https://ayudas.habitatasistencial.es"
+              href="https://accessibility-grants-x3b7.bolt.host"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 bg-[#1B3A6B] text-white font-semibold hover:bg-[#152d54] transition"
@@ -50,7 +49,6 @@ export default function ToolsSection() {
             </a>
           </article>
 
-          {/* Card 2: Asesor IA */}
           <article className="bg-white rounded-2xl border shadow-sm hover:shadow-xl transition-all duration-300 p-8 flex flex-col">
             <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-[#1B3A6B]/10 text-[#1B3A6B]">
               <Bot className="w-7 h-7" />
@@ -84,7 +82,7 @@ export default function ToolsSection() {
         </div>
 
         <p className="text-center text-sm text-slate-500 mt-10 max-w-2xl mx-auto">
-          Estas herramientas son de acceso libre y estánadas para facilitar la prevención y el acceso a ayudas públicas. Si necesitas apoyo personalizado, contacta con nosotros.
+          Estas herramientas son de acceso libre y están pensadas para facilitar la prevención y el acceso a ayudas públicas. Si necesitas apoyo personalizado, contacta con nosotros.
         </p>
       </div>
     </section>
