@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Phone, Menu, X, ExternalLink, Layers, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
-const helpUrl = "https://ayudas.habitatasistencial.es";
+const helpUrl = "https://accessibility-grants-x3b7.bolt.host";
 
 const nav = [
   ["#inicio", "Inicio"],
@@ -187,7 +187,7 @@ export function Navbar() {
               >
                 <strong className="block text-[#1B3A6B]">Buscador de ayudas</strong>
                 <span className="mt-1 block text-sm text-slate-600">Ayudas de accesibilidad y subvenciones</span>
-                <span className="mt-3 block break-all text-xs text-slate-500">ayudas.habitatasistencial.es</span>
+                <span className="mt-3 block break-all text-xs text-slate-500">accessibility-grants-x3b7.bolt.host</span>
                 <ExternalLink className="mt-3 h-4 w-4 text-[#1B3A6B]" />
               </a>
               <a
