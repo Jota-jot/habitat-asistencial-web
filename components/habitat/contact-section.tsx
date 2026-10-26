@@ -31,6 +31,11 @@ const services = [
   "Otro",
 ];
 
+const CONTACT_EMAIL = "habitatasistencial@gmail.com";
+// El dominio personalizado devuelve 405 en POST; usamos el origen Vercel + FormSubmit.
+const API_URL = "https://habitat-asistencial-web-gkxm.vercel.app/api/contact";
+const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
+
 export default function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [feedback, setFeedback] = useState("");
@@ -43,31 +48,74 @@ export default function ContactSection() {
     const form = e.currentTarget;
     const data = new FormData(form);
     const payload = {
-      name: String(data.get("name") || ""),
-      email: String(data.get("email") || ""),
-      phone: String(data.get("phone") || ""),
-      service: String(data.get("service") || ""),
-      message: String(data.get("message") || ""),
+      name: String(data.get("name") || "").trim(),
+      email: String(data.get("email") || "").trim(),
+      phone: String(data.get("phone") || "").trim(),
+      service: String(data.get("service") || "").trim(),
+      message: String(data.get("message") || "").trim(),
     };
 
+    if (!payload.name || !payload.email || !payload.message) {
+      setStatus("error");
+      setFeedback("Completa nombre, email y mensaje.");
+      return;
+    }
+
     try {
-      const res = await fetch("/api/contact", {
+      // 1) API en Vercel (logs + intento de reenvío)
+      let apiOk = false;
+      try {
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        apiOk = res.ok;
+      } catch {
+        apiOk = false;
+      }
+
+      // 2) Entrega directa a Gmail (FormSubmit)
+      const fs = await fetch(FORMSUBMIT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          ...payload,
+          _subject: `[Hábitat Asistencial] Contacto web — ${payload.service || "Consulta"}`,
+          _template: "table",
+          _replyto: payload.email,
+          _captcha: "false",
+        }),
       });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setStatus("error");
-        setFeedback(json.error || "No se pudo enviar. Prueba WhatsApp o llama al 635 332 019.");
+
+      const fsJson = await fs.json().catch(() => ({} as { success?: boolean; message?: string }));
+
+      if (fs.ok && fsJson.success !== false) {
+        setStatus("ok");
+        setFeedback(
+          "Mensaje enviado. Si es la primera vez, revisa también la bandeja de spam de habitatasistencial@gmail.com por si FormSubmit pide activar el formulario."
+        );
+        form.reset();
         return;
       }
-      setStatus("ok");
-      setFeedback(json.message || "Mensaje enviado correctamente.");
-      form.reset();
+
+      if (apiOk) {
+        setStatus("ok");
+        setFeedback(
+          "Hemos registrado tu mensaje. Si no recibes respuesta, escribe por WhatsApp al 635 332 019."
+        );
+        form.reset();
+        return;
+      }
+
+      setStatus("error");
+      setFeedback(
+        fsJson.message ||
+          "No se pudo enviar ahora. Usa WhatsApp al 635 332 019 o escribe a habitatasistencial@gmail.com."
+      );
     } catch {
       setStatus("error");
-      setFeedback("Error de conexión. Usa WhatsApp o el teléfono +34 635 332 019.");
+      setFeedback("Error de conexión. WhatsApp: +34 635 332 019.");
     }
   }
 
@@ -95,11 +143,11 @@ export default function ContactSection() {
                   <p className="font-semibold">+34 635 332 019</p>
                 </div>
               </a>
-              <a href="mailto:habitatasistencial@gmail.com" className="flex gap-3">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="flex gap-3">
                 <Mail className="w-5 h-5 text-[#F0A500]" />
                 <div>
                   <p className="text-white/60 text-xs uppercase">Email</p>
-                  <p className="font-semibold break-all">habitatasistencial@gmail.com</p>
+                  <p className="font-semibold break-all">{CONTACT_EMAIL}</p>
                 </div>
               </a>
               <div className="flex gap-3">
