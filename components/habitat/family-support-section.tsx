@@ -28,7 +28,7 @@ export function FamilySupportSection() {
             </p>
           </div>
           <a
-            href="https://ayudas.habitatasistencial.es"
+            href="https://accessibility-grants-x3b7.bolt.host"
             className="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#F0A500] px-6 py-3 font-bold text-[#0f2340] transition hover:brightness-95"
           >
             Busco ayudas <span aria-hidden="true" className="ml-2">→</span>
