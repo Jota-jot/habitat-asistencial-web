@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Navbar } from "@/components/habitat/navbar";
 import { HeroSection } from "@/components/habitat/hero-section";
 import { FamilySupportSection } from "@/components/habitat/family-support-section";
@@ -62,6 +63,20 @@ export default function Home() {
                 <li className="flex gap-3"><span className="text-[#F0A500]">✓</span><span>Recomendaciones para familias y profesionales.</span></li>
               </ul>
             </div>
+          </div>
+        </section>
+        <section className="bg-[#fffaf0] px-5 py-14 sm:py-16">
+          <div className="mx-auto grid max-w-7xl items-center gap-8 rounded-3xl border border-[#f0dca8] bg-white p-6 sm:p-10 lg:grid-cols-[1fr_auto]">
+            <div>
+              <p className="font-bold uppercase tracking-wider text-[#b77900]">Educación y prevención</p>
+              <h2 className="mt-2 text-3xl font-extrabold text-[#1B3A6B] sm:text-4xl">Canta y Juega</h2>
+              <p className="mt-4 max-w-3xl leading-7 text-slate-700">
+                Canciones, gestos y retos sencillos para que los niños recuerden cómo prevenir accidentes en la calle y en casa, y compartan los aprendizajes con sus familias.
+              </p>
+            </div>
+            <Link href="/canta-y-juega" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#F0A500] px-6 py-3 font-bold text-[#172b4d] hover:brightness-105">
+              Descubrir Canta y Juega
+            </Link>
           </div>
         </section>
         <CtaSection />
