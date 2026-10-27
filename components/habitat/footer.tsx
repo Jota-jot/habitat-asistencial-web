@@ -8,8 +8,8 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-lg">Hábitat Asistencial</h3>
             <p className="text-white/60 text-sm leading-relaxed mt-3">
-              Orientamos a las familias, organizamos apoyos en el hogar y facilitamos la
-              contratación del cuidado adecuado según cada caso.
+              Organizamos apoyos en el hogar y prestamos horas de servicio en domicilio con contrato
+              con Hábitat, sujeto a disponibilidad y mínimos. Orientamos a las familias en cada paso.
             </p>
             <div className="space-y-2 mt-4">
               <a href="tel:+34635332019" className="flex items-center gap-2 text-sm text-white/70">
@@ -38,8 +38,16 @@ export default function Footer() {
               Servicios
             </h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li>Organización de apoyos</li>
-              <li>Kit Hogar Seguro</li>
+              <li>
+                <a href="#organizacion-apoyos" className="hover:text-white">
+                  Organización de apoyos y horas
+                </a>
+              </li>
+              <li>
+                <a href="#kit-hogar-seguro" className="hover:text-white">
+                  Kit Hogar Seguro
+                </a>
+              </li>
               <li>ASSURE CAREWARE</li>
               <li>Punto AMBER</li>
               <li>Hogares Seguros</li>
