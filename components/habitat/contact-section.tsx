@@ -32,50 +32,86 @@ const services = [
 ];
 
 const CONTACT_EMAIL = "habitatasistencial@gmail.com";
-// El dominio personalizado devuelve 405 en POST; usamos el origen Vercel + FormSubmit.
+const WHATSAPP = "34635332019";
 const API_URL = "https://habitat-asistencial-web-gkxm.vercel.app/api/contact";
 const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
+
+function buildWhatsAppUrl(payload: {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+}) {
+  const lines = [
+    "Hola, me gustaría solicitar información sobre Hábitat Asistencial.",
+    "",
+    `Nombre: ${payload.name}`,
+    payload.phone ? `Teléfono: ${payload.phone}` : "",
+    payload.email ? `Email: ${payload.email}` : "",
+    payload.service ? `Interés: ${payload.service}` : "",
+    "",
+    payload.message,
+  ].filter(Boolean);
+  return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join("\n"))}`;
+}
 
 export default function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [feedback, setFeedback] = useState("");
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("loading");
-    setFeedback("");
-
-    const form = e.currentTarget;
+  function readPayload(form: HTMLFormElement) {
     const data = new FormData(form);
-    const payload = {
+    return {
       name: String(data.get("name") || "").trim(),
       email: String(data.get("email") || "").trim(),
       phone: String(data.get("phone") || "").trim(),
       service: String(data.get("service") || "").trim(),
       message: String(data.get("message") || "").trim(),
     };
+  }
 
-    if (!payload.name || !payload.email || !payload.message) {
+  /** Vía principal: WhatsApp con los datos del formulario */
+  function onWhatsApp(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const payload = readPayload(form);
+    if (!payload.name || !payload.message) {
       setStatus("error");
-      setFeedback("Completa nombre, email y mensaje.");
+      setFeedback("Indica al menos tu nombre y un mensaje breve.");
       return;
     }
+    // Intento de registro en segundo plano (no bloquea WhatsApp)
+    fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+    }).catch(() => {});
 
+    window.open(buildWhatsAppUrl(payload), "_blank", "noopener,noreferrer");
+    setStatus("ok");
+    setFeedback("Se ha abierto WhatsApp con tu consulta. Si no se abre, escribe al +34 635 332 019.");
+  }
+
+  /** Vía secundaria: intento de email */
+  async function onEmailSubmit() {
+    const form = document.getElementById("habitat-contact-form") as HTMLFormElement | null;
+    if (!form) return;
+    setStatus("loading");
+    setFeedback("");
+    const payload = readPayload(form);
+    if (!payload.name || !payload.email || !payload.message) {
+      setStatus("error");
+      setFeedback("Para email hacen falta nombre, email y mensaje.");
+      return;
+    }
     try {
-      // 1) API en Vercel (logs + intento de reenvío)
-      let apiOk = false;
-      try {
-        const res = await fetch(API_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(payload),
-        });
-        apiOk = res.ok;
-      } catch {
-        apiOk = false;
-      }
+      fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      }).catch(() => {});
 
-      // 2) Entrega directa a Gmail (FormSubmit)
       const fs = await fetch(FORMSUBMIT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -87,35 +123,18 @@ export default function ContactSection() {
           _captcha: "false",
         }),
       });
-
-      const fsJson = await fs.json().catch(() => ({} as { success?: boolean; message?: string }));
-
+      const fsJson = await fs.json().catch(() => ({} as { success?: boolean }));
       if (fs.ok && fsJson.success !== false) {
         setStatus("ok");
-        setFeedback(
-          "Mensaje enviado. Si es la primera vez, revisa también la bandeja de spam de habitatasistencial@gmail.com por si FormSubmit pide activar el formulario."
-        );
+        setFeedback("Mensaje enviado por email. Revisa también spam si es la primera vez (FormSubmit)." );
         form.reset();
         return;
       }
-
-      if (apiOk) {
-        setStatus("ok");
-        setFeedback(
-          "Hemos registrado tu mensaje. Si no recibes respuesta, escribe por WhatsApp al 635 332 019."
-        );
-        form.reset();
-        return;
-      }
-
       setStatus("error");
-      setFeedback(
-        fsJson.message ||
-          "No se pudo enviar ahora. Usa WhatsApp al 635 332 019 o escribe a habitatasistencial@gmail.com."
-      );
+      setFeedback("El email no se pudo confirmar. Usa el botón de WhatsApp, es más rápido.");
     } catch {
       setStatus("error");
-      setFeedback("Error de conexión. WhatsApp: +34 635 332 019.");
+      setFeedback("Error de conexión. Mejor WhatsApp: +34 635 332 019.");
     }
   }
 
@@ -128,7 +147,7 @@ export default function ContactSection() {
             Estamos aquí para <span className="text-[#F0A500]">ayudarte</span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-[#2a4f8a]">
-            Cercanía, prevención y acompañamiento. Cuéntanos qué necesitas y te asesoramos sin compromiso.
+            Rellena el formulario y envíanoslo por WhatsApp (respuesta más rápida) o por email.
           </p>
         </div>
 
@@ -174,18 +193,25 @@ export default function ContactSection() {
             </div>
             <a
               className="mt-6 flex items-center justify-center rounded-xl bg-green-600 px-4 py-3 font-bold"
-              href="https://wa.me/34635332019?text=Hola%2C%20me%20gustaría%20solicitar%20información%20sobre%20los%20servicios%20de%20Hábitat%20Asistencial"
+              href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola, me gustaría solicitar información sobre los servicios de Hábitat Asistencial")}`}
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              WhatsApp
+              WhatsApp directo
             </a>
           </div>
 
-          <form onSubmit={onSubmit} className="lg:col-span-3 rounded-2xl p-6 sm:p-8 border bg-[#1B3A6B]/[.04]">
-            <h3 className="text-xl font-bold mb-6 text-[#1B3A6B]">Envíanos un mensaje</h3>
+          <form
+            id="habitat-contact-form"
+            onSubmit={onWhatsApp}
+            className="lg:col-span-3 rounded-2xl p-6 sm:p-8 border bg-[#1B3A6B]/[.04]"
+          >
+            <h3 className="text-xl font-bold mb-2 text-[#1B3A6B]">Envíanos un mensaje</h3>
+            <p className="text-sm text-slate-600 mb-6">
+              Completa los datos y pulsa <strong>Enviar por WhatsApp</strong>. Así nos llega al momento.
+            </p>
             <div className="grid sm:grid-cols-2 gap-4 mb-4">
               <input required name="name" placeholder="Nombre *" className="rounded-xl border px-3 py-3" />
-              <input required name="email" type="email" placeholder="Email *" className="rounded-xl border px-3 py-3" />
+              <input name="email" type="email" placeholder="Email" className="rounded-xl border px-3 py-3" />
             </div>
             <div className="grid sm:grid-cols-2 gap-4 mb-4">
               <input name="phone" placeholder="Teléfono" className="rounded-xl border px-3 py-3" />
@@ -219,11 +245,19 @@ export default function ContactSection() {
               </p>
             )}
             <button
-              className="w-full rounded-xl bg-[#F0A500] text-[#0f2340] font-bold py-4 disabled:opacity-60"
+              className="w-full rounded-xl bg-green-600 text-white font-bold py-4 flex items-center justify-center gap-2"
               type="submit"
-              disabled={status === "loading"}
             >
-              {status === "loading" ? "Enviando…" : "Enviar mensaje"}
+              <MessageCircle className="w-5 h-5" />
+              Enviar por WhatsApp
+            </button>
+            <button
+              type="button"
+              onClick={onEmailSubmit}
+              disabled={status === "loading"}
+              className="mt-3 w-full rounded-xl border border-[#1B3A6B]/25 bg-white text-[#1B3A6B] font-semibold py-3 disabled:opacity-60"
+            >
+              {status === "loading" ? "Enviando email…" : "Enviar también por email"}
             </button>
           </form>
         </div>
