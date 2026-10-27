@@ -9,6 +9,7 @@ import AboutSection from "@/components/habitat/about-section";
 import VideosSection from "@/components/habitat/videos-section";
 import ToolsSection from "@/components/habitat/tools-section";
 import FaqSection from "@/components/habitat/faq-section";
+import DependenciaSection from "@/components/habitat/dependencia-section";
 import CtaSection from "@/components/habitat/cta-section";
 import CredentialsSection from "@/components/habitat/credentials-section";
 import ContactSection from "@/components/habitat/contact-section";
@@ -68,6 +69,7 @@ export default function Home() {
           </div>
         </section>
         <FaqSection />
+        <DependenciaSection />
         <CtaSection />
         <CredentialsSection />
         <ContactSection />
