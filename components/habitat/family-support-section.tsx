@@ -17,18 +17,19 @@ export function FamilySupportSection() {
           </h2>
           <div className="space-y-5 text-base leading-8 text-slate-700 sm:text-lg sm:leading-8">
             <p>
-              Entendemos la realidad que afronta una familia cuando necesita ayuda en el
-              domicilio: no siempre sabe por dónde empezar ni cuánto apoyo va a necesitar.
+              Entendemos la realidad que afronta una familia cuando necesita ayuda en el domicilio:
+              no siempre sabe por dónde empezar ni cuánto apoyo va a necesitar.
             </p>
             <p>
-              En Hábitat Asistencial acompañamos ese proceso. Empezamos por la necesidad
-              actual, facilitamos la contratación del apoyo adecuado y hacemos seguimiento
-              para ayudar a la persona y a su familia durante la adaptación. Después,
-              modulamos el servicio según cómo evolucione la situación.
+              En Hábitat Asistencial acompañamos ese proceso. Empezamos por la necesidad actual,
+              organizamos los apoyos y, si lo necesitáis, prestamos horas de servicio en domicilio
+              con contrato con Hábitat —sujeto a disponibilidad y mínimos—. También orientamos a
+              quien prefiere otras fórmulas. Hacemos seguimiento y modulamos el plan según evolucione
+              la situación.
             </p>
             <p className="font-semibold text-[#1B3A6B]">
-              No tienes que decidirlo todo de golpe: empezamos con lo que hace falta hoy y
-              lo ajustamos contigo.
+              No tienes que decidirlo todo de golpe: empezamos con lo que hace falta hoy y lo
+              ajustamos contigo.
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -39,6 +40,12 @@ export function FamilySupportSection() {
               className="inline-flex min-h-12 items-center justify-center rounded-xl bg-green-600 px-6 py-3 font-bold text-white transition hover:bg-green-700"
             >
               Hablar con nosotros por WhatsApp
+            </a>
+            <a
+              href="#organizacion-apoyos"
+              className="inline-flex min-h-12 items-center justify-center rounded-xl border border-[#1B3A6B]/25 bg-white px-6 py-3 font-bold text-[#1B3A6B] transition hover:bg-slate-50"
+            >
+              Ver organización de apoyos
             </a>
             <a
               href="https://accessibility-grants-x3b7.bolt.host"
