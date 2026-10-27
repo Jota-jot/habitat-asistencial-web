@@ -1,8 +1,13 @@
 "use client";
 
-import { ArrowRight, MapPin, ShieldCheck, Wifi, Users, Sprout } from "lucide-react";
+import { ArrowRight, MapPin, ShieldCheck, Wifi, Users, Sprout, MessageCircle } from "lucide-react";
 
 const helpUrl = "https://accessibility-grants-x3b7.bolt.host";
+const waUrl =
+  "https://wa.me/34635332019?text=" +
+  encodeURIComponent(
+    "Hola, necesito información sobre apoyos en casa con Hábitat Asistencial. ¿Podemos hablar?"
+  );
 
 export function HeroSection() {
   const go = (selector: string) =>
@@ -25,20 +30,29 @@ export function HeroSection() {
         <div className="max-w-2xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#68D3C4]/40 bg-[#102B46]/50 px-4 py-2 text-sm font-semibold text-white backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-[#68D3C4]" />
-            Personas · Hogar · Tecnología · Comunidad
+            Respuesta rápida por WhatsApp · Alcalá, Segovia, Guadalajara, Talavera
           </div>
           <h1 className="text-4xl font-bold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
             Cuando cuidar importa, <span className="text-[#68D3C4]">organizar el apoyo lo cambia todo.</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-white/90 sm:text-xl">
-            Ayudamos a las personas y sus familias a organizar mejor los apoyos en casa, conectar profesionales y recursos cercanos e incorporar tecnología cuando realmente aporta valor.
+            Te ayudamos a ordenar los apoyos en casa sin decidirlo todo de golpe. Cuéntanos la situación y te orientamos sin compromiso.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-3.5 font-bold text-white shadow-lg shadow-green-900/30 transition hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:px-7"
+            >
+              <MessageCircle className="h-5 w-5" />
+              Hablar ahora por WhatsApp
+            </a>
             <button
               onClick={() => go("#contacto")}
               className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl bg-[#68D3C4] px-6 py-3 font-bold text-[#102B46] shadow-lg transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:px-7"
             >
-              Cuéntanos qué apoyo necesitáis <ArrowRight className="h-5 w-5" />
+              Escribir en el formulario <ArrowRight className="h-5 w-5" />
             </button>
             <a
               href={helpUrl}
@@ -49,7 +63,7 @@ export function HeroSection() {
           </div>
           <div className="mt-6 flex items-start gap-2 text-sm leading-6 text-white/75">
             <MapPin className="mt-1 h-4 w-4 shrink-0 text-[#68D3C4]" />
-            Red y recursos en Alcalá de Henares, Segovia/La Lastrilla, Guadalajara y Talavera de la Reina; cobertura concreta según servicio y disponibilidad.
+            Red y recursos en Alcalá de Henares, Segovia/La Lastrilla, Guadalajara y Talavera de la Reina; cobertura según servicio y disponibilidad.
           </div>
         </div>
 
