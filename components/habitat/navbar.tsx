@@ -8,6 +8,7 @@ const helpUrl = "https://accessibility-grants-x3b7.bolt.host";
 
 const nav = [
   ["#inicio", "Inicio"],
+  ["#modelo-integral", "Modelo"],
   ["#servicios", "Servicios"],
   ["#punto-amber", "Punto AMBER"],
   ["#noticias", "Noticias"],
