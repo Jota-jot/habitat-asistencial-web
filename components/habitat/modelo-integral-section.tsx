@@ -1,53 +1,37 @@
 "use client";
 
-import {
-  Activity,
-  Brain,
-  HeartHandshake,
-  House,
-  MapPinned,
-  ShieldCheck,
-  Smartphone,
-  UsersRound,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const pillars = [
   {
-    icon: HeartHandshake,
+    number: "01",
     title: "Personas y familias",
-    text: "Orientación, organización de rutinas y continuidad de los apoyos, respetando las decisiones de la persona y sin cargar toda la responsabilidad sobre la familia.",
-    label: "Apoyo cotidiano",
+    text: "Orientamos y ayudamos a organizar rutinas y apoyos, respetando las decisiones de la persona. La familia necesita acompañamiento; no tiene por qué resolverlo todo sola.",
   },
   {
-    icon: Brain,
-    title: "Demencia y capacidades",
-    text: "Apoyo centrado en la persona, actividades significativas y recursos de estimulación cognitiva y funcional. La tecnología acompaña; no sustituye la valoración profesional.",
-    label: "Cognición y función",
+    number: "02",
+    title: "Demencia, memoria y capacidades",
+    text: "Actividades significativas y recursos para trabajar la participación, la cognición y la función cotidiana. La tecnología puede apoyar, pero no sustituye el criterio ni la atención profesional.",
   },
   {
-    icon: ShieldCheck,
+    number: "03",
     title: "Prevención y hogar seguro",
-    text: "Accesibilidad, prevención de caídas y accidentes, detección de riesgos, botiquines de referencia, mantenimiento de recursos y procedimientos claros.",
-    label: "Seguridad por capas",
+    text: "Revisar el entorno, anticipar riesgos, mantener los recursos preparados y acordar qué hacer si ocurre un incidente. La seguridad se construye con medidas complementarias.",
   },
   {
-    icon: Smartphone,
+    number: "04",
     title: "Tecnología asistencial",
-    text: "ASSURE CAREWARE, Vigía · BioVital, Cuidón Hub y soluciones de apoyo, según el equipo, la configuración y el protocolo acordado.",
-    label: "Tecnología con propósito",
+    text: "Soluciones como ASSURE CAREWARE, Vigía · BioVital y Cuidón Hub se valoran según su función real, la situación de la persona y el protocolo acordado.",
   },
   {
-    icon: UsersRound,
+    number: "05",
     title: "Profesionales y comunidad",
-    text: "Coordinación con familias, profesionales, farmacias, comercios y entidades locales, con responsabilidades claras y respeto a la privacidad.",
-    label: "Red de proximidad",
+    text: "Familias, profesionales, farmacias, comercios y entidades locales pueden colaborar cuando hay acuerdos claros, funciones definidas y respeto a la privacidad.",
   },
   {
-    icon: MapPinned,
+    number: "06",
     title: "Residencias y territorio",
-    text: "SHRI, Acción Rural / Rural-Red y colaboración con entidades para adaptar los apoyos a cada entorno, las distancias y los recursos disponibles.",
-    label: "Continuidad asistencial",
+    text: "SHRI y las líneas de Acción Rural / Rural-Red buscan dar continuidad a los apoyos y adaptarlos a los recursos y distancias de cada entorno.",
   },
 ];
 
@@ -55,65 +39,49 @@ export default function ModeloIntegralSection() {
   return (
     <section id="modelo-integral" className="scroll-mt-24 bg-white py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-16">
-          <div className="lg:sticky lg:top-28">
-            <span className="inline-flex rounded-full border border-[#F0A500]/35 bg-[#F0A500]/10 px-4 py-1.5 text-sm font-semibold text-[#8a6200]">
-              Cómo trabajamos
-            </span>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-4xl lg:text-5xl">
-              No son servicios aislados. Es un sistema de apoyo.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">
-              En Hábitat Asistencial conectamos a la persona, su familia, los profesionales, la tecnología y los recursos de su entorno. Empezamos por lo que necesita hoy y organizamos los apoyos que tienen sentido para su situación.
-            </p>
-            <p className="mt-4 text-base leading-7 text-slate-600">
-              Nuestro criterio es activar y conservar capacidades siempre que sea posible, prevenir riesgos y facilitar una respuesta ordenada cuando algo cambia. No prometemos riesgo cero ni sustituimos innecesariamente a las personas.
-            </p>
-            <a
-              href="#contacto"
-              className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1B3A6B] px-6 py-3 font-bold text-white transition hover:bg-[#244b83]"
-            >
-              Cuéntanos qué necesitas <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#9a6d00]">
+            Cómo trabajamos
+          </p>
+          <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-4xl lg:text-5xl">
+            Cada persona tiene su historia. Los apoyos deben encajar en ella.
+          </h2>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+            En Hábitat Asistencial ayudamos a ordenar apoyos alrededor de la vida real: la persona, su familia, quienes la atienden y los recursos que tiene cerca. Empezamos por escuchar qué está pasando y qué hace falta ahora.
+          </p>
+          <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+            Queremos mantener capacidades y participación, prevenir riesgos evitables y facilitar la coordinación. No prometemos riesgo cero ni creemos que una aplicación o un dispositivo puedan sustituir el acompañamiento humano.
+          </p>
+          <a
+            href="#contacto"
+            className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-lg bg-[#1B3A6B] px-5 py-3 font-semibold text-white transition hover:bg-[#244b83]"
+          >
+            Hablemos de vuestra situación <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {pillars.map(({ icon: Icon, title, text, label }) => (
-              <article
-                key={title}
-                className="group rounded-2xl border border-slate-200 bg-[#F8FAFC] p-5 transition hover:-translate-y-0.5 hover:border-[#F0A500]/60 hover:bg-white hover:shadow-lg sm:p-6"
-              >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1B3A6B]/[0.08] text-[#1B3A6B] transition group-hover:bg-[#F0A500]/15">
-                  <Icon className="h-6 w-6" aria-hidden="true" />
+        <div className="mt-12 grid gap-x-10 gap-y-0 md:grid-cols-2">
+          {pillars.map(({ number, title, text }) => (
+            <article key={number} className="border-t border-slate-200 py-6 sm:py-7">
+              <div className="flex items-start gap-4">
+                <span className="mt-1 text-sm font-semibold tabular-nums text-[#9a6d00]">{number}</span>
+                <div>
+                  <h3 className="text-xl font-semibold leading-snug text-[#1B3A6B]">{title}</h3>
+                  <p className="mt-2 text-base leading-7 text-slate-600">{text}</p>
                 </div>
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-[#9a6d00]">{label}</p>
-                <h3 className="text-xl font-bold text-[#1B3A6B]">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{text}</p>
-              </article>
-            ))}
-          </div>
+              </div>
+            </article>
+          ))}
         </div>
 
-        <div className="mt-10 grid gap-4 rounded-3xl bg-[#1B3A6B] p-6 text-white sm:grid-cols-3 sm:p-8">
-          <div>
-            <Activity className="mb-3 h-6 w-6 text-[#F0A500]" />
-            <h3 className="font-bold">Activar capacidades</h3>
-            <p className="mt-2 text-sm leading-6 text-white/75">Movimiento, equilibrio, memoria, participación y autonomía, según cada persona.</p>
-          </div>
-          <div>
-            <House className="mb-3 h-6 w-6 text-[#F0A500]" />
-            <h3 className="font-bold">Preparar el entorno</h3>
-            <p className="mt-2 text-sm leading-6 text-white/75">Medidas de prevención complementarias, recursos localizables y revisiones para mantenerlos preparados.</p>
-          </div>
-          <div>
-            <HeartHandshake className="mb-3 h-6 w-6 text-[#F0A500]" />
-            <h3 className="font-bold">Coordinar la respuesta</h3>
-            <p className="mt-2 text-sm leading-6 text-white/75">Procedimientos claros para saber quién actúa, cómo pedir ayuda y cuándo escalar a profesionales.</p>
-          </div>
+        <div className="mt-8 border-l-2 border-[#F0A500] bg-[#F8FAFC] px-5 py-4 sm:px-6">
+          <p className="font-semibold text-[#1B3A6B]">Tres preguntas guían el trabajo</p>
+          <p className="mt-2 leading-7 text-slate-600">
+            ¿Qué capacidades queremos mantener? ¿Qué podemos preparar mejor en casa y en el entorno? ¿Quién debe actuar y cómo nos coordinamos si algo cambia?
+          </p>
         </div>
-
         <p className="mt-5 text-sm leading-6 text-slate-500">
-          Cada apoyo se concreta según el servicio contratado, las necesidades, la disponibilidad y el territorio. Las funciones de los equipos y los tiempos de respuesta dependen de la solución y del protocolo acordado.
+          Los apoyos disponibles, las funciones de cada equipo y los tiempos de respuesta dependen del servicio, del territorio y del protocolo acordado.
         </p>
       </div>
     </section>
