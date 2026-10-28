@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Phone, Menu, X, ExternalLink, Layers, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
-const helpUrl = "https://accessibility-grants-x3b7.bolt.host";
+const helpUrl = "https://accessibility-grants-9yea.bolt.host";
 
 const nav = [
   ["#inicio", "Inicio"],
