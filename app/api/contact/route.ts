@@ -54,9 +54,9 @@ export async function POST(request: Request) {
     const service = (body.service || "").trim();
     const message = (body.message || "").trim();
 
-    if (!name || !email || !message) {
+    if (!name || !message) {
       return NextResponse.json(
-        { error: "Faltan nombre, email o mensaje." },
+        { error: "Faltan nombre o mensaje." },
         { status: 400 }
       );
     }
@@ -86,7 +86,7 @@ export async function POST(request: Request) {
           message,
           _subject: `[Hábitat Asistencial] Contacto web — ${service || "Consulta"}`,
           _template: "table",
-          _replyto: email,
+          ...(email ? { _replyto: email } : {}),
         }),
       }
     );
