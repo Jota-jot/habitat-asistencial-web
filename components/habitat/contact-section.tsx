@@ -34,7 +34,6 @@ const services = [
 const CONTACT_EMAIL = "habitatasistencial@gmail.com";
 const WHATSAPP = "34635332019";
 const API_URL = "/api/contact";
-const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 function buildWhatsAppUrl(payload: {
   name: string;
@@ -54,6 +53,31 @@ function buildWhatsAppUrl(payload: {
     payload.message,
   ].filter(Boolean);
   return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join("\n"))}`;
+}
+
+function buildMailtoUrl(payload: {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+}) {
+  const subject = encodeURIComponent(
+    `[Hábitat Asistencial] Consulta web — ${payload.service || "Información"}`
+  );
+  const body = encodeURIComponent(
+    [
+      `Nombre: ${payload.name}`,
+      payload.phone ? `Teléfono: ${payload.phone}` : "",
+      payload.email ? `Email: ${payload.email}` : "",
+      payload.service ? `Interés: ${payload.service}` : "",
+      "",
+      payload.message,
+    ]
+      .filter(Boolean)
+      .join("\n")
+  );
+  return `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 }
 
 export default function ContactSection() {
@@ -81,7 +105,6 @@ export default function ContactSection() {
       setFeedback("Indica al menos tu nombre y un mensaje breve.");
       return;
     }
-    // Intento de registro en segundo plano (no bloquea WhatsApp)
     fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -90,46 +113,26 @@ export default function ContactSection() {
 
     window.open(buildWhatsAppUrl(payload), "_blank", "noopener,noreferrer");
     setStatus("ok");
-    setFeedback("WhatsApp debería abrirse con tu consulta preparada. Revisa el mensaje y pulsa Enviar; si no se abre, escribe al +34 635 332 019.");
+    setFeedback(
+      "WhatsApp debería abrirse con tu consulta preparada. Revisa el mensaje y pulsa Enviar; si no se abre, escribe al +34 635 332 019."
+    );
   }
 
-  /** Vía secundaria: intento de email */
-  async function onEmailSubmit() {
+  /** Vía secundaria: abre el cliente de correo del usuario (sin FormSubmit) */
+  function onEmailSubmit() {
     const form = document.getElementById("habitat-contact-form") as HTMLFormElement | null;
     if (!form) return;
-    setStatus("loading");
-    setFeedback("");
     const payload = readPayload(form);
-    if (!payload.name || !payload.email || !payload.message) {
+    if (!payload.name || !payload.message) {
       setStatus("error");
-      setFeedback("Para email hacen falta nombre, email y mensaje.");
+      setFeedback("Para email hacen falta al menos nombre y mensaje.");
       return;
     }
-    try {
-      const fs = await fetch(FORMSUBMIT_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          ...payload,
-          _subject: `[Hábitat Asistencial] Contacto web — ${payload.service || "Consulta"}`,
-          _template: "table",
-          _replyto: payload.email,
-          _captcha: "false",
-        }),
-      });
-      const fsJson = await fs.json().catch(() => ({} as { success?: boolean }));
-      if (fs.ok && fsJson.success === true) {
-        setStatus("ok");
-        setFeedback("FormSubmit ha aceptado la solicitud. Comprueba que el correo llegue a la bandeja de entrada o spam; la entrega final no está verificada desde aquí.");
-        form.reset();
-        return;
-      }
-      setStatus("error");
-      setFeedback("El email no se pudo confirmar. Usa el botón de WhatsApp, es más rápido.");
-    } catch {
-      setStatus("error");
-      setFeedback("Error de conexión. Mejor WhatsApp: +34 635 332 019.");
-    }
+    window.location.href = buildMailtoUrl(payload);
+    setStatus("ok");
+    setFeedback(
+      "Se abrirá tu aplicación de correo con el mensaje preparado para habitatasistencial@gmail.com. Si no se abre, escribe a ese email o usa WhatsApp."
+    );
   }
 
   return (
@@ -141,7 +144,7 @@ export default function ContactSection() {
             Estamos aquí para <span className="text-[#F0A500]">ayudarte</span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-[#2a4f8a]">
-            Rellena el formulario y envíanoslo por WhatsApp (respuesta más rápida) o por email.
+            La forma más rápida es WhatsApp. También puedes abrir un email desde tu propio correo.
           </p>
         </div>
 
@@ -201,7 +204,7 @@ export default function ContactSection() {
           >
             <h3 className="text-xl font-bold mb-2 text-[#1B3A6B]">Envíanos un mensaje</h3>
             <p className="text-sm text-slate-600 mb-6">
-              Completa los datos y pulsa <strong>Enviar por WhatsApp</strong>. WhatsApp abrirá el mensaje preparado; tendrás que pulsar Enviar.
+              Completa los datos y pulsa <strong>Enviar por WhatsApp</strong>. Se abrirá el chat con el texto listo; solo tienes que pulsar Enviar.
             </p>
             <div className="grid sm:grid-cols-2 gap-4 mb-4">
               <input required name="name" placeholder="Nombre *" className="rounded-xl border px-3 py-3" />
@@ -248,10 +251,9 @@ export default function ContactSection() {
             <button
               type="button"
               onClick={onEmailSubmit}
-              disabled={status === "loading"}
-              className="mt-3 w-full rounded-xl border border-[#1B3A6B]/25 bg-white text-[#1B3A6B] font-semibold py-3 disabled:opacity-60"
+              className="mt-3 w-full rounded-xl border border-[#1B3A6B]/25 bg-white text-[#1B3A6B] font-semibold py-3"
             >
-              {status === "loading" ? "Enviando email…" : "Enviar también por email"}
+              Abrir en mi correo (email)
             </button>
           </form>
         </div>
