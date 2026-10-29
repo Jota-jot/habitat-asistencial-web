@@ -118,7 +118,7 @@ export default function ContactSection() {
         }),
       });
       const fsJson = await fs.json().catch(() => ({} as { success?: boolean }));
-      if (fs.ok && fsJson.success !== false) {
+      if (fs.ok && fsJson.success === true) {
         setStatus("ok");
         setFeedback("FormSubmit ha aceptado la solicitud. Comprueba que el correo llegue a la bandeja de entrada o spam; la entrega final no está verificada desde aquí.");
         form.reset();
