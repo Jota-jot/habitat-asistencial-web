@@ -11,16 +11,60 @@ type ContactPayload = {
 };
 
 async function readPayload(request: Request): Promise<ContactPayload> {
-  const contentType = request.headers.get("content-type") || "";
+  const contentType = (request.headers.get("content-type") || "").toLowerCase();
 
+  // Primary path used by the website (fetch + JSON.stringify).
   if (contentType.includes("application/json")) {
-    return (await request.json()) as ContactPayload;
+    try {
+      const data = (await request.json()) as ContactPayload;
+      return {
+        name: String(data.name || ""),
+        email: String(data.email || ""),
+        phone: String(data.phone || ""),
+        service: String(data.service || ""),
+        message: String(data.message || ""),
+      };
+    } catch {
+      return {};
+    }
   }
 
+  // Form posts (urlencoded / multipart).
   if (
     contentType.includes("application/x-www-form-urlencoded") ||
     contentType.includes("multipart/form-data")
   ) {
+    try {
+      const form = await request.formData();
+      return {
+        name: String(form.get("name") || ""),
+        email: String(form.get("email") || ""),
+        phone: String(form.get("phone") || ""),
+        service: String(form.get("service") || ""),
+        message: String(form.get("message") || ""),
+      };
+    } catch {
+      return {};
+    }
+  }
+
+  // Content-Type missing or unusual: try JSON, then formData.
+  try {
+    const data = (await request.clone().json()) as ContactPayload;
+    if (data && (data.name || data.message || data.email)) {
+      return {
+        name: String(data.name || ""),
+        email: String(data.email || ""),
+        phone: String(data.phone || ""),
+        service: String(data.service || ""),
+        message: String(data.message || ""),
+      };
+    }
+  } catch {
+    /* continue */
+  }
+
+  try {
     const form = await request.formData();
     return {
       name: String(form.get("name") || ""),
@@ -29,9 +73,9 @@ async function readPayload(request: Request): Promise<ContactPayload> {
       service: String(form.get("service") || ""),
       message: String(form.get("message") || ""),
     };
+  } catch {
+    return {};
   }
-
-  return {};
 }
 
 export async function POST(request: Request) {
@@ -43,7 +87,7 @@ export async function POST(request: Request) {
     const service = (body.service || "").trim();
     const message = (body.message || "").trim();
 
-    // Email is optional: WhatsApp-only enquiries must also be accepted.
+    // Email is optional: WhatsApp-first flow only requires name + message.
     if (!name || !message) {
       return NextResponse.json(
         { success: false, delivered: false, error: "Faltan nombre o mensaje." },
@@ -51,7 +95,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Do not write personal contact details or message contents to application logs.
     const forward = await fetch(`https://formsubmit.co/ajax/${DESTINATION}`, {
       method: "POST",
       headers: {
@@ -71,11 +114,15 @@ export async function POST(request: Request) {
     });
 
     const result = (await forward.json().catch(() => ({}))) as {
-      success?: boolean;
+      success?: boolean | string;
       message?: string;
     };
 
-    if (!forward.ok || result.success !== true) {
+    const accepted =
+      forward.ok &&
+      (result.success === true || result.success === "true");
+
+    if (!accepted) {
       console.error("FormSubmit rejected contact", {
         status: forward.status,
         message: result.message || "No se confirmó la aceptación",
