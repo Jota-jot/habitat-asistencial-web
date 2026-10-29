@@ -31,18 +31,7 @@ async function readPayload(request: Request): Promise<ContactPayload> {
     };
   }
 
-  try {
-    return (await request.json()) as ContactPayload;
-  } catch {
-    const form = await request.formData();
-    return {
-      name: String(form.get("name") || ""),
-      email: String(form.get("email") || ""),
-      phone: String(form.get("phone") || ""),
-      service: String(form.get("service") || ""),
-      message: String(form.get("message") || ""),
-    };
-  }
+  return {};
 }
 
 export async function POST(request: Request) {
@@ -54,69 +43,66 @@ export async function POST(request: Request) {
     const service = (body.service || "").trim();
     const message = (body.message || "").trim();
 
-    if (!name || !email || !message) {
+    // Email is optional: WhatsApp-only enquiries must also be accepted.
+    if (!name || !message) {
       return NextResponse.json(
-        { error: "Faltan nombre, email o mensaje." },
+        { success: false, delivered: false, error: "Faltan nombre o mensaje." },
         { status: 400 }
       );
     }
 
-    console.log("Nuevo contacto Hábitat Asistencial", {
-      name,
-      email,
-      phone,
-      service,
-      message,
-      at: new Date().toISOString(),
+    // Do not write personal contact details or message contents to application logs.
+    const forward = await fetch(`https://formsubmit.co/ajax/${DESTINATION}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        phone,
+        service,
+        message,
+        _subject: `[Hábitat Asistencial] Contacto web — ${service || "Consulta"}`,
+        _template: "table",
+        ...(email ? { _replyto: email } : {}),
+      }),
     });
 
-    const forward = await fetch(
-      `https://formsubmit.co/ajax/${DESTINATION}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          service,
-          message,
-          _subject: `[Hábitat Asistencial] Contacto web — ${service || "Consulta"}`,
-          _template: "table",
-          _replyto: email,
-        }),
-      }
-    );
+    const result = (await forward.json().catch(() => ({}))) as {
+      success?: boolean;
+      message?: string;
+    };
 
-    if (!forward.ok) {
-      const detail = await forward.text().catch(() => "");
-      console.error("FormSubmit error", forward.status, detail);
+    if (!forward.ok || result.success !== true) {
+      console.error("FormSubmit rejected contact", {
+        status: forward.status,
+        message: result.message || "No se confirmó la aceptación",
+      });
       return NextResponse.json(
         {
-          success: true,
+          success: false,
           delivered: false,
-          message:
-            "Hemos recibido tu mensaje. Si no te contactamos pronto, escríbenos por WhatsApp al 635 332 019.",
+          error:
+            "No se ha podido confirmar el envío por email. Contacta por WhatsApp al +34 635 332 019.",
         },
-        { status: 200 }
+        { status: 502 }
       );
     }
 
-    return NextResponse.json(
-      {
-        success: true,
-        delivered: true,
-        message: "Mensaje enviado correctamente. Te responderemos pronto.",
-      },
-      { status: 200 }
-    );
+    return NextResponse.json({
+      success: true,
+      delivered: true,
+      message: "El servicio de correo ha aceptado la solicitud.",
+    });
   } catch (err) {
-    console.error("Contact API error", err);
+    console.error(
+      "Contact API error",
+      err instanceof Error ? err.message : "Unknown error"
+    );
     return NextResponse.json(
-      { error: "Error interno del servidor" },
+      { success: false, delivered: false, error: "Error interno del servidor." },
       { status: 500 }
     );
   }

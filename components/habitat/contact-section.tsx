@@ -33,7 +33,7 @@ const services = [
 
 const CONTACT_EMAIL = "habitatasistencial@gmail.com";
 const WHATSAPP = "34635332019";
-const API_URL = "https://habitat-asistencial-web-gkxm.vercel.app/api/contact";
+const API_URL = "/api/contact";
 const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 function buildWhatsAppUrl(payload: {
@@ -90,7 +90,7 @@ export default function ContactSection() {
 
     window.open(buildWhatsAppUrl(payload), "_blank", "noopener,noreferrer");
     setStatus("ok");
-    setFeedback("Se ha abierto WhatsApp con tu consulta. Si no se abre, escribe al +34 635 332 019.");
+    setFeedback("WhatsApp debería abrirse con tu consulta preparada. Revisa el mensaje y pulsa Enviar; si no se abre, escribe al +34 635 332 019.");
   }
 
   /** Vía secundaria: intento de email */
@@ -106,12 +106,6 @@ export default function ContactSection() {
       return;
     }
     try {
-      fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-      }).catch(() => {});
-
       const fs = await fetch(FORMSUBMIT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -124,9 +118,9 @@ export default function ContactSection() {
         }),
       });
       const fsJson = await fs.json().catch(() => ({} as { success?: boolean }));
-      if (fs.ok && fsJson.success !== false) {
+      if (fs.ok && fsJson.success === true) {
         setStatus("ok");
-        setFeedback("Mensaje enviado por email. Revisa también spam si es la primera vez (FormSubmit)." );
+        setFeedback("FormSubmit ha aceptado la solicitud. Comprueba que el correo llegue a la bandeja de entrada o spam; la entrega final no está verificada desde aquí.");
         form.reset();
         return;
       }
@@ -207,7 +201,7 @@ export default function ContactSection() {
           >
             <h3 className="text-xl font-bold mb-2 text-[#1B3A6B]">Envíanos un mensaje</h3>
             <p className="text-sm text-slate-600 mb-6">
-              Completa los datos y pulsa <strong>Enviar por WhatsApp</strong>. Así nos llega al momento.
+              Completa los datos y pulsa <strong>Enviar por WhatsApp</strong>. WhatsApp abrirá el mensaje preparado; tendrás que pulsar Enviar.
             </p>
             <div className="grid sm:grid-cols-2 gap-4 mb-4">
               <input required name="name" placeholder="Nombre *" className="rounded-xl border px-3 py-3" />
