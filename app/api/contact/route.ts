@@ -75,7 +75,7 @@ export async function POST(request: Request) {
       message?: string;
     };
 
-    if (!forward.ok || result.success === false) {
+    if (!forward.ok || result.success !== true) {
       console.error("FormSubmit rejected contact", {
         status: forward.status,
         message: result.message || "No se confirmó la aceptación",
