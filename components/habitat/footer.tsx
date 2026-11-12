@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -39,19 +40,52 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-white/60">
               <li>
-                <a href="#organizacion-apoyos" className="hover:text-white">
+                <a href="/#organizacion-apoyos" className="hover:text-white">
                   Organización de apoyos y horas
                 </a>
               </li>
               <li>
-                <a href="#kit-hogar-seguro" className="hover:text-white">
+                <Link href="/informe-hogar-seguro" className="hover:text-white">
+                  Informe Hogar Seguro
+                </Link>
+              </li>
+              <li>
+                <a href="/#kit-hogar-seguro" className="hover:text-white">
                   Kit Hogar Seguro
                 </a>
               </li>
               <li>ASSURE CAREWARE</li>
               <li>Punto AMBER</li>
-              <li>Hogares Seguros</li>
             </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-[#F0A500]">
+              Zonas
+            </h4>
+            <ul className="space-y-2 text-sm text-white/60">
+              <li>
+                <Link href="/ayuda-a-domicilio-alcala-de-henares" className="hover:text-white">
+                  Alcalá de Henares
+                </Link>
+              </li>
+              <li>
+                <Link href="/ayuda-a-domicilio-guadalajara" className="hover:text-white">
+                  Guadalajara
+                </Link>
+              </li>
+              <li>
+                <Link href="/ayuda-a-domicilio-segovia" className="hover:text-white">
+                  Segovia / La Lastrilla
+                </Link>
+              </li>
+              <li>
+                <Link href="/ayuda-a-domicilio-talavera-de-la-reina" className="hover:text-white">
+                  Talavera de la Reina
+                </Link>
+              </li>
+              <li>Azuqueca · Meco · Torrejón</li>
+            </ul>
+            <p className="mt-3 text-xs text-white/40">Cobertura según servicio y disponibilidad.</p>
           </div>
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-[#F0A500]">
@@ -59,41 +93,26 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-white/60">
               <li>
-                <a href="#preguntas-frecuentes" className="hover:text-white">
+                <a href="/#preguntas-frecuentes" className="hover:text-white">
                   Preguntas frecuentes
                 </a>
               </li>
               <li>
-                <a href="#dependencia" className="hover:text-white">
+                <a href="/#dependencia" className="hover:text-white">
                   Dependencia: cómo empezar
                 </a>
               </li>
               <li>
-                <a href="#kit-hogar-seguro" className="hover:text-white">
-                  Kit Hogar Seguro
-                </a>
+                <Link href="/informe-hogar-seguro" className="hover:text-white">
+                  Informe Hogar Seguro
+                </Link>
               </li>
               <li>
-                <a href="#contacto" className="hover:text-white">
+                <a href="/#contacto" className="hover:text-white">
                   Contacto
                 </a>
               </li>
             </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-[#F0A500]">
-              Presencia
-            </h4>
-            <ul className="space-y-2 text-sm text-white/60">
-              <li>Alcalá de Henares</li>
-              <li>Guadalajara</li>
-              <li>Azuqueca</li>
-              <li>Meco</li>
-              <li>Torrejón de Ardoz</li>
-              <li>Segovia / La Lastrilla</li>
-              <li>Talavera de la Reina</li>
-            </ul>
-            <p className="mt-3 text-xs text-white/40">Cobertura según servicio y disponibilidad.</p>
           </div>
         </div>
         <div className="border-t border-white/10 py-6 text-white/40 text-sm">
