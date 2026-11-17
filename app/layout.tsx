@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -60,6 +61,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.variable} antialiased`}>
         {children}
         <Toaster />
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              '<elevenlabs-convai agent-id="agent_0801m7j75b5zfc8thw4n8smzpp30"></elevenlabs-convai>',
+          }}
+        />
+        <Script
+          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
